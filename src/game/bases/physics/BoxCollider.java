@@ -1,6 +1,7 @@
 package game.bases.physics;
 
 import game.bases.GameObject;
+import game.bases.Vector2D;
 import tklibs.Mathx;
 
 /**
@@ -36,14 +37,26 @@ public class BoxCollider extends GameObject {
         return this.screenPosition.y + height / 2;
     }
 
-    public boolean collideWith(BoxCollider other) {
-        boolean xOverlap = Mathx.inRange(other.left(), this.left(), this.right())
-                || Mathx.inRange(this.left(), other.left(), other.right());
+    public boolean collideWith(float top, float bottom, float left, float right) {
+        boolean xOverlap = Mathx.inRange(left, this.left(), this.right())
+                || Mathx.inRange(this.left(), left, right);
 
-        boolean yOverlap = Mathx.inRange(other.top(), this.top(), this.bottom())
-                || Mathx.inRange(this.top(), other.top(), other.bottom());
+        boolean yOverlap = Mathx.inRange(top, this.top(), this.bottom())
+                || Mathx.inRange(this.top(), top, bottom);
 
         return xOverlap && yOverlap;
+    }
+
+    public boolean collideWith(BoxCollider other) {
+        return collideWith(other.top(), other.bottom(), other.left(), other.right());
+
+//        boolean xOverlap = Mathx.inRange(other.left(), this.left(), this.right())
+//                || Mathx.inRange(this.left(), other.left(), other.right());
+//
+//        boolean yOverlap = Mathx.inRange(other.top(), this.top(), this.bottom())
+//                || Mathx.inRange(this.top(), other.top(), other.bottom());
+//
+//        return xOverlap && yOverlap;
 
 //        Rectangle rect1 = new Rectangle((int)left(), (int)top(), (int)width, (int)height);
 //        Rectangle rect2 = new Rectangle((int)other.left(), (int)other.top(), (int)other.width, (int)other.height);

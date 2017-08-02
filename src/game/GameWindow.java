@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import game.bases.*;
 import game.bases.scenes.SceneManager;
+import game.platforms.Platform;
 import game.players.Player;
 
 /**
@@ -37,7 +38,20 @@ public class GameWindow extends JFrame {
     }
 
     private void addPlatforms() {
+        for(int i = 0, platformX = 10; i < 20; i++, platformX += 10) {
+            Platform platform = new Platform();
+            platform.position.set(platformX, 300);
+            GameObject.add(platform);
+        }
 
+        addPlatform(130, 300 - 30);
+        addPlatform(130, 300 - 30 * 2);
+    }
+
+    private void addPlatform(int x, int y) {
+        Platform platform = new Platform();
+        platform.position.set(x, y);
+        GameObject.add(platform);
     }
 
     private void addPlayer() {
