@@ -18,11 +18,13 @@ public class Animation implements Renderer {
     private FrameCounter frameCounter;
     private boolean finished;
     private boolean repeat;
+    private Transform transform;
 
     public Animation(int delayFrame, boolean repeat, BufferedImage... imageArr) {
         frameCounter = new FrameCounter(delayFrame);
         this.images = Arrays.asList(imageArr);
         this.repeat = repeat;
+        this.transform = new Transform();
     }
 
     public Animation(BufferedImage... imageArr) {
@@ -40,10 +42,7 @@ public class Animation implements Renderer {
             frameCounter.reset();
         }
         BufferedImage image = images.get(imageIndex);
-        g.drawImage(image,
-                (int) (position.x - image.getWidth() / 2),
-                (int) (position.y - image.getHeight() / 2),
-                null);
+        transform.render(g, image, position);
     }
 
     private void changeIndex() {
@@ -60,5 +59,9 @@ public class Animation implements Renderer {
     public void reset() {
         imageIndex = 0;
         finished = false;
+    }
+
+    public Transform getTransform() {
+        return transform;
     }
 }

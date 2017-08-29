@@ -25,6 +25,7 @@ public class Player extends GameObject {
     private BoxCollider boxCollider;
 
     private float angle = 0;
+
     private final float GRAVITY = 0.4f;
     private final int JET_ENERGY_MAX = 400;
     private final int JET_ENERGY_CONSUME_RATE = 2;
@@ -32,7 +33,7 @@ public class Player extends GameObject {
     private final int JET_ENERGY_RECHARGE_RATE = 4;
 
     private final int JET_NORMAL_SPEED = 4;
-    private final int JET_BOOST_SPEED = 20;
+    private final int JET_BOOST_SPEED = 12;
 
     private boolean boostDisabled;
 
@@ -59,6 +60,12 @@ public class Player extends GameObject {
     public void run(Vector2D parentPosition) {
         super.run(parentPosition);
 
+        updatePhysics();
+
+        animate();
+    }
+
+    private void updatePhysics() {
         this.jetVelocity.set(Vector2D.ZERO);
         this.velocity.x = 0;
 
@@ -89,11 +96,20 @@ public class Player extends GameObject {
             this.velocity.y = this.jetVelocity.y;
         } else {
             this.velocity.y += Mathx.clamp (GRAVITY + this.jetVelocity.y, -15, 1);
+            if (angle > 0) {
+                angle = Mathx.clamp(angle - 1, 0, 60);
+            } else if(angle < 0) {
+                angle = Mathx.clamp(angle + 1, -60, 0);
+            }
         }
         this.velocity.x = jetVelocity.x;
 
         moveVertical();
         moveHorizontal();
+    }
+
+    private void animate() {
+        animator.update(this);
     }
 
     private void boostAndFire() {
@@ -152,5 +168,9 @@ public class Player extends GameObject {
             this.angle = 0;
         }
         this.position.y += velocity.y;
+    }
+
+    public float getAngle() {
+        return angle;
     }
 }

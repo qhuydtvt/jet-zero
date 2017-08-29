@@ -10,18 +10,15 @@ import java.awt.image.BufferedImage;
  */
 public class ImageRenderer implements Renderer {
     public BufferedImage image;
-    public Vector2D anchor;
-    public Vector2D scale;
+    public Transform transform;
 
     public ImageRenderer(BufferedImage image) {
         this.image = image;
-        this.anchor = new Vector2D(0.5f, 0.5f);
-        this.scale = new Vector2D(1,1);
+        this.transform = new Transform();
     }
 
     public void render(Graphics g, Vector2D position) {
-        g.drawImage(image, (int) (position.x - image.getWidth() * anchor.x),
-                (int) (position.y - image.getHeight() * anchor.y), null);
+        transform.render(g, this.image, position);
     }
 
     public int getWidth() {

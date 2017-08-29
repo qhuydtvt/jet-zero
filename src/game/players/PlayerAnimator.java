@@ -22,8 +22,14 @@ public class PlayerAnimator implements Renderer {
             SpriteUtils.loadImage("assets/images/sprite/jet00004.png")
     );
 
+    private Animation currentAnimation = standingAnimation;
+
     @Override
     public void render(Graphics g, Vector2D position) {
-        standingAnimation.render(g, position);
+        currentAnimation.render(g, position);
+    }
+
+    public void update(Player player) {
+        currentAnimation.getTransform().angle = player.getAngle();
     }
 }
