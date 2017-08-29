@@ -17,20 +17,6 @@ public class InputManager {
 
     public static final InputManager instance = new InputManager();
 
-    private List<InputListener> inputListeners;
-
-    public void register(InputListener inputListener) {
-        inputListeners.add(inputListener);
-    }
-
-    public void unregister(InputListener inputListener) {
-        inputListeners.remove(inputListener);
-    }
-
-    private InputManager() {
-        inputListeners = new ArrayList<>();
-    }
-
     public void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getKeyCode()) {
             case KeyEvent.VK_LEFT:
@@ -48,10 +34,6 @@ public class InputManager {
             case KeyEvent.VK_X:
                 xPressed = true;
                 break;
-        }
-
-        for (InputListener inputListener : inputListeners){
-            inputListener.onKeyPressed(keyEvent.getKeyCode());
         }
     }
 
@@ -72,14 +54,6 @@ public class InputManager {
             case KeyEvent.VK_X:
                 xPressed = false;
                 break;
-        }
-
-        Iterator<InputListener> iterator = inputListeners.iterator();
-        while (iterator.hasNext()) {
-            InputListener inputListener = iterator.next();
-            if (inputListener.onKeyReleased(keyEvent.getKeyCode())) {
-                iterator.remove();
-            }
         }
     }
 }
