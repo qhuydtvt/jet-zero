@@ -12,20 +12,28 @@ import game.bases.renderers.ImageRenderer;
 import game.platforms.Platform;
 import tklibs.Mathx;
 
+import javax.xml.bind.ValidationEvent;
+
 /**
  * Created by huynq on 8/3/17.
  */
 public class Player extends GameObject {
     private BoxCollider boxCollider;
 
-    private final float GRAVITY = 2f;
-    private final int JET_ENERGY_MAX = 100;
+    private float angle = 0;
+    private final float GRAVITY = 0.4f;
+    private final int JET_ENERGY_MAX = 400;
     private final int JET_ENERGY_CONSUME_RATE = 2;
-    private final int JET_ENERGY_RECHARGE_RATE = 1;
+    private final int JET_ENERGY_BOOST_CONSUME_RATE = 10;
+    private final int JET_ENERGY_RECHARGE_RATE = 4;
+
+    private final int JET_NORMAL_SPEED = 4;
+    private final int JET_BOOST_SPEED = 12;
 
     private int jetEnergy;
 
     private Vector2D velocity;
+    private Vector2D jetVelocity;
 
     public Player() {
         super();
@@ -34,48 +42,57 @@ public class Player extends GameObject {
         this.boxCollider = new BoxCollider(30, 30);
         this.children.add(boxCollider);
         this.jetEnergy = JET_ENERGY_MAX;
+        this.jetVelocity = new Vector2D();
     }
 
     @Override
     public void run(Vector2D parentPosition) {
         super.run(parentPosition);
 
-        this.velocity.y += GRAVITY;
-
+        this.jetVelocity.set(Vector2D.ZERO);
         this.velocity.x = 0;
 
-        if (InputManager.instance.leftPressed) {
-            this.velocity.x -= 5;
+        if (InputManager.instance.rightPressed) {
+            angle = Mathx.clamp(angle + 4, -60, 60);
         }
 
-        if (InputManager.instance.rightPressed) {
-            this.velocity.x += 5;
+        if (InputManager.instance.leftPressed) {
+            angle = Mathx.clamp(angle - 4, -60, 60);
         }
 
         if (InputManager.instance.upPressed) {
-            if (Physics.bodyInRect(position.add(0, 1), boxCollider.width, boxCollider.height, Platform.class) != null) {
-                // Feet on ground
-                this.velocity.y = -10;
-            } else {
-                // Jet
-                if(jetEnergy > 0) {
-                    this.velocity.y = -2;
-                    this.jetEnergy -= JET_ENERGY_CONSUME_RATE;
-                }
+            // Jet
+            if (jetEnergy > JET_ENERGY_MAX * 0.2) {
+                this.jetVelocity.set(Vector2D.UP.rotate(angle).multiply(JET_NORMAL_SPEED));
+                this.jetEnergy -= JET_ENERGY_CONSUME_RATE;
             }
         } else {
             this.jetEnergy = Mathx.clamp(this.jetEnergy + JET_ENERGY_RECHARGE_RATE, 0, JET_ENERGY_MAX);
         }
+
+        if (InputManager.instance.xPressed) {
+            if (jetEnergy > JET_ENERGY_MAX * 0.2) {
+                this.jetVelocity.set(Vector2D.UP.rotate(angle).multiply(JET_BOOST_SPEED));
+                this.jetEnergy -= JET_ENERGY_BOOST_CONSUME_RATE;
+            }
+        }
+
+        if (GRAVITY + this.jetVelocity.y <= 0) {
+            this.velocity.y = this.jetVelocity.y;
+        } else {
+            this.velocity.y += Mathx.clamp (GRAVITY + this.jetVelocity.y, -15, 1);
+        }
+        this.velocity.x = jetVelocity.x;
 
         moveVertical();
         moveHorizontal();
     }
 
     private void moveHorizontal() {
-        float deltaX = velocity.x > 0 ? 1: -1;
+        float deltaX = velocity.x > 0 ? 1 : -1;
         PhysicsBody body = Physics.bodyInRect(position.add(velocity.x, 0), boxCollider.width, boxCollider.height, Platform.class);
         if (body != null) {
-            while(Physics.bodyInRect(position.add(deltaX, 0), boxCollider.width, boxCollider.height, Platform.class) == null) {
+            while (Physics.bodyInRect(position.add(deltaX, 0), boxCollider.width, boxCollider.height, Platform.class) == null) {
                 position.addUp(deltaX, 0);
             }
             this.velocity.x = 0;
@@ -84,13 +101,14 @@ public class Player extends GameObject {
     }
 
     private void moveVertical() {
-        float deltaY = velocity.y > 0 ? 1: -1;
+        float deltaY = velocity.y > 0 ? 1 : -1;
         PhysicsBody body = Physics.bodyInRect(position.add(0, velocity.y), boxCollider.width, boxCollider.height, Platform.class);
         if (body != null) {
-            while(Physics.bodyInRect(position.add(0, deltaY), boxCollider.width, boxCollider.height, Platform.class) == null) {
+            while (Physics.bodyInRect(position.add(0, deltaY), boxCollider.width, boxCollider.height, Platform.class) == null) {
                 position.addUp(0, deltaY);
             }
             this.velocity.y = 0;
+            this.angle = 0;
         }
         this.position.y += velocity.y;
     }
