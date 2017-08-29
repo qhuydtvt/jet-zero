@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by huynq on 8/1/17.
  */
-public class SequenceAction implements Action {
+public class SequenceAction extends Action {
 
     private List<Action> actions;
     private int currentActionIndex;

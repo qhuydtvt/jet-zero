@@ -47,6 +47,11 @@ public class BoxCollider extends GameObject {
         return xOverlap && yOverlap;
     }
 
+    public boolean contains(Vector2D position) {
+        return Mathx.inRange(position.x, left(), right()) &&
+                Mathx.inRange(position.y, top(), bottom());
+    }
+
     public boolean collideWith(BoxCollider other) {
         return collideWith(other.top(), other.bottom(), other.left(), other.right());
 

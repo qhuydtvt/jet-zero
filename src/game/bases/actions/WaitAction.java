@@ -6,7 +6,7 @@ import game.bases.GameObject;
 /**
  * Created by huynq on 8/1/17.
  */
-public class WaitAction implements Action {
+public class WaitAction extends Action {
 
     private FrameCounter frameCounter;
 

@@ -28,4 +28,8 @@ public class ImageRenderer implements Renderer {
     public int getHeight() {
         return image.getHeight();
     }
+
+    public Transform getTransform() {
+        return transform;
+    }
 }

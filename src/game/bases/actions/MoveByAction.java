@@ -7,7 +7,7 @@ import game.bases.Vector2D;
 /**
  * Created by huynq on 8/1/17.
  */
-public class MoveByAction implements Action {
+public class MoveByAction extends Action {
 
     private Vector2D velocity;
     private FrameCounter frameCounter;

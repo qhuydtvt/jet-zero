@@ -5,7 +5,7 @@ import game.bases.GameObject;
 /**
  * Created by huynq on 8/1/17.
  */
-public class RepeatForeverAction implements Action {
+public class RepeatForeverAction extends Action {
     private Action action;
 
     public RepeatForeverAction(Action action) {
