@@ -40,12 +40,12 @@ public class GameWindow extends JFrame {
     private void addPlatforms() {
         for(int i = 0, platformX = 10; i < 20; i++, platformX += 32) {
             Platform platform = new Platform();
-            platform.position.set(platformX, 300);
+            platform.position.set(platformX, 500);
             GameObject.add(platform);
         }
 
-        addPlatform(130, 300 - 30);
-        addPlatform(130, 300 - 30 * 2);
+        addPlatform(130, 500 - 30);
+        addPlatform(130, 500 - 30 * 2);
     }
 
     private void addPlatform(int x, int y) {

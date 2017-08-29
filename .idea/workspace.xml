@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ab87bd4-b3ce-4745-9dd8-942c1b9f8a4b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/players/enginefires/EngineFire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/GameObject.java" afterPath="$PROJECT_DIR$/src/game/bases/GameObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/Vector2D.java" afterPath="$PROJECT_DIR$/src/game/bases/Vector2D.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/renderers/Transform.java" afterPath="$PROJECT_DIR$/src/game/bases/renderers/Transform.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/players/Player.java" afterPath="$PROJECT_DIR$/src/game/players/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/GameWindow.java" afterPath="$PROJECT_DIR$/src/game/GameWindow.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,7 +36,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EngineFire.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EngineFire.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/players/enginefires/EngineFire.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="107">
@@ -53,6 +48,16 @@
                 <element signature="e#1302#1303#0" expanded="true" />
                 <element signature="e#1337#1338#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameWindow.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game/GameWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -163,7 +168,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/game/bases/inputs/InputManager.java" />
         <option value="$PROJECT_DIR$/src/game/players/PlayerFireBall.java" />
-        <option value="$PROJECT_DIR$/src/game/GameWindow.java" />
         <option value="$PROJECT_DIR$/src/game/platforms/Platform.java" />
         <option value="$PROJECT_DIR$/src/game/bases/renderers/ImageRenderer.java" />
         <option value="$PROJECT_DIR$/src/game/bases/renderers/Animation.java" />
@@ -173,6 +177,7 @@
         <option value="$PROJECT_DIR$/src/game/bases/GameObject.java" />
         <option value="$PROJECT_DIR$/src/game/players/Player.java" />
         <option value="$PROJECT_DIR$/src/game/players/enginefires/EngineFire.java" />
+        <option value="$PROJECT_DIR$/src/game/GameWindow.java" />
       </list>
     </option>
   </component>
@@ -800,17 +805,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/GameWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="40" column="67" lean-forward="false" selection-start-line="40" selection-start-column="67" selection-end-line="40" selection-end-column="67" />
-          <folding>
-            <element signature="e#2034#2035#0" expanded="true" />
-            <element signature="e#2092#2093#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/platforms/Platform.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -960,6 +954,14 @@
             <element signature="e#1302#1303#0" expanded="true" />
             <element signature="e#1337#1338#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/GameWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="47" column="26" lean-forward="false" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
