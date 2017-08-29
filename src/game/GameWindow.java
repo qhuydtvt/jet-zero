@@ -38,7 +38,7 @@ public class GameWindow extends JFrame {
     }
 
     private void addPlatforms() {
-        for(int i = 0, platformX = 10; i < 20; i++, platformX += 10) {
+        for(int i = 0, platformX = 10; i < 20; i++, platformX += 32) {
             Platform platform = new Platform();
             platform.position.set(platformX, 300);
             GameObject.add(platform);

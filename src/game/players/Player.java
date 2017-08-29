@@ -32,7 +32,7 @@ public class Player extends GameObject {
     private final int JET_ENERGY_RECHARGE_RATE = 4;
 
     private final int JET_NORMAL_SPEED = 4;
-    private final int JET_BOOST_SPEED = 12;
+    private final int JET_BOOST_SPEED = 20;
 
     private boolean boostDisabled;
 
@@ -41,11 +41,14 @@ public class Player extends GameObject {
     private Vector2D velocity;
     private Vector2D jetVelocity;
 
+    private PlayerAnimator animator;
+
     public Player() {
         super();
         this.velocity = new Vector2D();
-        this.renderer = new ImageRenderer(Utils.loadAssetImage("green_square.png"));
-        this.boxCollider = new BoxCollider(30, 30);
+        this.animator = new PlayerAnimator();
+        this.renderer = animator;
+        this.boxCollider = new BoxCollider(32, 32);
         this.children.add(boxCollider);
         this.jetEnergy = JET_ENERGY_MAX;
         this.jetVelocity = new Vector2D();
