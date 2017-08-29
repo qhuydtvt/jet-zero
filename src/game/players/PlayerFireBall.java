@@ -18,7 +18,7 @@ public class PlayerFireBall extends GameObject {
     public PlayerFireBall() {
         super();
         this.velocity = new Vector2D();
-        this.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/green_square_small.png"));
+        this.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/sprite/fireball00000.png"));
         this.children.add(boxCollider = new BoxCollider(15,15));
     }
 
