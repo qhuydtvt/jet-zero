@@ -20,6 +20,7 @@ public class GameObject {
     public Vector2D screenPosition;
 
     public boolean isActive;
+    public boolean isHidden;
 
     public Renderer renderer;
 
@@ -93,8 +94,13 @@ public class GameObject {
     }
 
     public void render(Graphics2D g2d) {
-        if (renderer != null) {
-            renderer.render(g2d, this.position);
+        if (!isHidden) {
+            for(GameObject child: children) {
+                child.render(g2d);
+            }
+            if (renderer != null) {
+                renderer.render(g2d, this.screenPosition);
+            }
         }
     }
 

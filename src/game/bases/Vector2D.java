@@ -8,6 +8,7 @@ public class Vector2D {
     public float y;
 
     public static final Vector2D ZERO = new Vector2D(0,0);
+    public static final Vector2D ONE = new Vector2D(1,1);
     public static final Vector2D DOWN = new Vector2D(0,1);
     public static final Vector2D UP = new Vector2D(0,-1);
 
@@ -57,6 +58,11 @@ public class Vector2D {
     public void set(float x, float y) {
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public Vector2D clone() {
+        return new Vector2D(x, y);
     }
 
     public void set(Vector2D other) {

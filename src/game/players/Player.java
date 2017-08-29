@@ -14,6 +14,7 @@ import game.bases.physics.Physics;
 import game.bases.physics.PhysicsBody;
 import game.bases.renderers.ImageRenderer;
 import game.platforms.Platform;
+import game.players.enginefires.EngineFire;
 import tklibs.Mathx;
 
 import static java.awt.event.KeyEvent.VK_X;
@@ -43,17 +44,40 @@ public class Player extends GameObject {
     private Vector2D jetVelocity;
 
     private PlayerAnimator animator;
+    private EngineFire engineFire;
+
+    private boolean jetRunning;
 
     public Player() {
         super();
+        configJet();
+        addAnimator();
+        addEngineFire();
+        addBoxCollider();
+    }
+
+    private void configJet() {
         this.velocity = new Vector2D();
-        this.animator = new PlayerAnimator();
-        this.renderer = animator;
-        this.boxCollider = new BoxCollider(32, 32);
-        this.children.add(boxCollider);
         this.jetEnergy = JET_ENERGY_MAX;
         this.jetVelocity = new Vector2D();
         this.boostDisabled = false;
+        this.jetRunning = false;
+    }
+
+    private void addAnimator() {
+        this.animator = new PlayerAnimator();
+        this.renderer = animator;
+    }
+
+    private void addBoxCollider() {
+        this.boxCollider = new BoxCollider(32, 32);
+        this.children.add(boxCollider);
+    }
+
+    private void addEngineFire() {
+        this.engineFire = new EngineFire();
+        this.engineFire.getRootPosition().set(0, 10);
+        this.children.add(engineFire);
     }
 
     @Override
@@ -61,13 +85,18 @@ public class Player extends GameObject {
         super.run(parentPosition);
 
         updatePhysics();
-
         animate();
+        updateEngineFire();
+    }
+
+    private void updateEngineFire() {
+        engineFire.update(this);
     }
 
     private void updatePhysics() {
         this.jetVelocity.set(Vector2D.ZERO);
         this.velocity.x = 0;
+        this.jetRunning = false;
 
         if (InputManager.instance.rightPressed) {
             angle = Mathx.clamp(angle + 4, -60, 60);
@@ -78,10 +107,8 @@ public class Player extends GameObject {
         }
 
         if (InputManager.instance.upPressed) {
-            // Jet
             if (jetEnergy > JET_ENERGY_MAX * 0.2) {
-                this.jetVelocity.set(Vector2D.UP.rotate(angle).multiply(JET_NORMAL_SPEED));
-                this.jetEnergy -= JET_ENERGY_CONSUME_RATE;
+                jetLift();
             }
         } else {
             this.jetEnergy = Mathx.clamp(this.jetEnergy + JET_ENERGY_RECHARGE_RATE, 0, JET_ENERGY_MAX);
@@ -106,6 +133,12 @@ public class Player extends GameObject {
 
         moveVertical();
         moveHorizontal();
+    }
+
+    private void jetLift() {
+        this.jetVelocity.set(Vector2D.UP.rotate(angle).multiply(JET_NORMAL_SPEED));
+        this.jetEnergy -= JET_ENERGY_CONSUME_RATE;
+        this.jetRunning = true;
     }
 
     private void animate() {
@@ -172,5 +205,9 @@ public class Player extends GameObject {
 
     public float getAngle() {
         return angle;
+    }
+
+    public boolean isJetRunning() {
+        return jetRunning;
     }
 }
