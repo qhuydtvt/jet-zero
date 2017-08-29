@@ -37,9 +37,9 @@ public class EngineFire extends GameObject {
             this.position.set(rootPosition.rotate(player.getAngle()));
             this.animation.getTransform().angle = player.getAngle();
             this.animation.getTransform().scale.set(0.5f, this.animScale);
-            this.animScale = Mathx.clamp(animScale + 0.03f, 0, 0.5f);
+            this.animScale = Mathx.clamp(animScale + 0.03f, 0, 0.7f);
         } else {
-            this.animScale = 0.01f;
+            this.animScale = 0.05f;
         }
     }
 

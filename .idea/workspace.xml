@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ab87bd4-b3ce-4745-9dd8-942c1b9f8a4b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/renderers/Transform.java" afterPath="$PROJECT_DIR$/src/game/bases/renderers/Transform.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/players/enginefires/EngineFire.java" afterPath="$PROJECT_DIR$/src/game/players/enginefires/EngineFire.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
