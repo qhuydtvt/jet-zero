@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ab87bd4-b3ce-4745-9dd8-942c1b9f8a4b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/players/PlayerFireBall.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/inputs/InputManager.java" afterPath="$PROJECT_DIR$/src/game/bases/inputs/InputManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/players/Player.java" afterPath="$PROJECT_DIR$/src/game/players/Player.java" />
-    </list>
+    <list default="true" id="5ab87bd4-b3ce-4745-9dd8-942c1b9f8a4b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,7 +71,7 @@
       <file leaf-file-name="PlayerFireBall.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/players/PlayerFireBall.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
+            <state relative-caret-position="936">
               <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -740,7 +735,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/players/PlayerFireBall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
+        <state relative-caret-position="936">
           <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
