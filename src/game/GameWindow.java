@@ -93,12 +93,12 @@ public class GameWindow extends JFrame {
         while (true) {
 
             if (lastTimeUpdate == -1) {
-                lastTimeUpdate = System.currentTimeMillis();
+                lastTimeUpdate = System.nanoTime();
             }
 
-            long currentTime = System.currentTimeMillis();
+            long currentTime = System.nanoTime();
 
-            if (currentTime - lastTimeUpdate > 17) {
+            if (currentTime - lastTimeUpdate > 17000000) {
 
                 lastTimeUpdate = currentTime;
 

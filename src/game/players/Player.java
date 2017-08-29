@@ -52,8 +52,6 @@ public class Player extends GameObject {
 
         moveVertical();
         moveHorizontal();
-
-        this.position.addUp(this.velocity);
     }
 
     private void moveHorizontal() {
@@ -65,6 +63,7 @@ public class Player extends GameObject {
             }
             this.velocity.x = 0;
         }
+        this.position.x += velocity.x;
     }
 
     private void moveVertical() {
@@ -76,5 +75,6 @@ public class Player extends GameObject {
             }
             this.velocity.y = 0;
         }
+        this.position.y += velocity.y;
     }
 }
