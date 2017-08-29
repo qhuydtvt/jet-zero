@@ -1,23 +1,18 @@
 package game.players;
 
-import game.Utils;
 import game.bases.GameObject;
 import game.bases.GameObjectPool;
 import game.bases.Vector2D;
 import game.bases.actions.Action;
 import game.bases.actions.SequenceAction;
 import game.bases.actions.WaitAction;
-import game.bases.inputs.InputListener;
 import game.bases.inputs.InputManager;
 import game.bases.physics.BoxCollider;
 import game.bases.physics.Physics;
 import game.bases.physics.PhysicsBody;
-import game.bases.renderers.ImageRenderer;
 import game.platforms.Platform;
 import game.players.enginefires.EngineFire;
 import tklibs.Mathx;
-
-import static java.awt.event.KeyEvent.VK_X;
 
 /**
  * Created by huynq on 8/3/17.
@@ -33,8 +28,10 @@ public class Player extends GameObject {
     private final int JET_ENERGY_BOOST_CONSUME_RATE = 10;
     private final int JET_ENERGY_RECHARGE_RATE = 4;
 
-    private final int JET_NORMAL_SPEED = 4;
+    private final int JET_NORMAL_MAX_SPEED = 4;
     private final int JET_BOOST_SPEED = 12;
+
+    private float jetSpeed;
 
     private boolean boostDisabled;
 
@@ -111,6 +108,7 @@ public class Player extends GameObject {
                 jetLift();
             }
         } else {
+            this.jetSpeed = 0;
             this.jetEnergy = Mathx.clamp(this.jetEnergy + JET_ENERGY_RECHARGE_RATE, 0, JET_ENERGY_MAX);
         }
 
@@ -136,7 +134,8 @@ public class Player extends GameObject {
     }
 
     private void jetLift() {
-        this.jetVelocity.set(Vector2D.UP.rotate(angle).multiply(JET_NORMAL_SPEED));
+        this.jetSpeed = Mathx.clamp(this.jetSpeed + 0.1f, 0.0f, JET_NORMAL_MAX_SPEED);
+        this.jetVelocity.set(Vector2D.UP.rotate(angle).multiply(jetSpeed));
         this.jetEnergy -= JET_ENERGY_CONSUME_RATE;
         this.jetRunning = true;
     }

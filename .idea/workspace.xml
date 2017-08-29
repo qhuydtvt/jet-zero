@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ab87bd4-b3ce-4745-9dd8-942c1b9f8a4b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/game/players/enginedusts/EngineDust.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/actions/Action.java" afterPath="$PROJECT_DIR$/src/game/bases/actions/Action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/actions/MoveByAction.java" afterPath="$PROJECT_DIR$/src/game/bases/actions/MoveByAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/actions/RepeatForeverAction.java" afterPath="$PROJECT_DIR$/src/game/bases/actions/RepeatForeverAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/actions/SequenceAction.java" afterPath="$PROJECT_DIR$/src/game/bases/actions/SequenceAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/actions/WaitAction.java" afterPath="$PROJECT_DIR$/src/game/bases/actions/WaitAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/physics/BoxCollider.java" afterPath="$PROJECT_DIR$/src/game/bases/physics/BoxCollider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/physics/Physics.java" afterPath="$PROJECT_DIR$/src/game/bases/physics/Physics.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/bases/renderers/ImageRenderer.java" afterPath="$PROJECT_DIR$/src/game/bases/renderers/ImageRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/players/enginefires/EngineFire.java" afterPath="$PROJECT_DIR$/src/game/players/enginefires/EngineFire.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tklibs/Mathx.java" afterPath="$PROJECT_DIR$/src/tklibs/Mathx.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/players/Player.java" afterPath="$PROJECT_DIR$/src/game/players/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/players/enginedusts/EngineDust.java" afterPath="$PROJECT_DIR$/src/game/players/enginedusts/EngineDust.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,16 +16,32 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EngineDust.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EngineDust.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/players/enginedusts/EngineDust.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+            <state relative-caret-position="181">
+              <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2061#2062#0" expanded="true" />
-                <element signature="e#2115#2462#0" expanded="true" />
-                <element signature="e#2461#2462#0" expanded="true" />
+                <element signature="e#1756#2061#0" expanded="true" />
+                <element signature="e#2060#2061#0" expanded="true" />
+                <element signature="e#2114#2461#0" expanded="true" />
+                <element signature="e#2460#2461#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game/players/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="136" column="57" lean-forward="false" selection-start-line="136" selection-start-column="57" selection-end-line="136" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3895#3896#0" expanded="true" />
+                <element signature="e#3932#3933#0" expanded="true" />
+                <element signature="class#4203:4634" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -125,16 +131,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Mathx.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tklibs/Mathx.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -167,7 +163,6 @@
         <option value="$PROJECT_DIR$/src/game/players/PlayerAnimator.java" />
         <option value="$PROJECT_DIR$/src/game/bases/Vector2D.java" />
         <option value="$PROJECT_DIR$/src/game/bases/GameObject.java" />
-        <option value="$PROJECT_DIR$/src/game/players/Player.java" />
         <option value="$PROJECT_DIR$/src/game/GameWindow.java" />
         <option value="$PROJECT_DIR$/src/game/bases/renderers/Transform.java" />
         <option value="$PROJECT_DIR$/src/game/players/PlayerFireBall.java" />
@@ -182,6 +177,7 @@
         <option value="$PROJECT_DIR$/src/game/bases/actions/SequenceAction.java" />
         <option value="$PROJECT_DIR$/src/game/bases/actions/WaitAction.java" />
         <option value="$PROJECT_DIR$/src/game/players/enginedusts/EngineDust.java" />
+        <option value="$PROJECT_DIR$/src/game/players/Player.java" />
       </list>
     </option>
   </component>
@@ -708,7 +704,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20866774" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20866774" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909605" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -934,25 +930,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/players/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="140" column="31" lean-forward="true" selection-start-line="140" selection-start-column="31" selection-end-line="140" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2363#2364#0" expanded="true" />
-            <element signature="e#2402#2403#0" expanded="true" />
-            <element signature="e#3899#3900#0" expanded="true" />
-            <element signature="e#3936#3937#0" expanded="true" />
-            <element signature="class#4207:4638" expanded="false" />
-            <element signature="e#6196#6197#0" expanded="true" />
-            <element signature="e#6224#6225#0" expanded="true" />
-            <element signature="e#6261#6262#0" expanded="true" />
-            <element signature="e#6294#6295#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/maps/untitled.tmx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1097,13 +1074,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/players/enginedusts/EngineDust.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="63" column="30" lean-forward="true" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+        <state relative-caret-position="181">
+          <caret line="25" column="29" lean-forward="true" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2061#2062#0" expanded="true" />
-            <element signature="e#2115#2462#0" expanded="true" />
-            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#1756#2061#0" expanded="true" />
+            <element signature="e#2060#2061#0" expanded="true" />
+            <element signature="e#2114#2461#0" expanded="true" />
+            <element signature="e#2460#2461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/players/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="136" column="57" lean-forward="false" selection-start-line="136" selection-start-column="57" selection-end-line="136" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3895#3896#0" expanded="true" />
+            <element signature="e#3932#3933#0" expanded="true" />
+            <element signature="class#4203:4634" expanded="false" />
           </folding>
         </state>
       </provider>

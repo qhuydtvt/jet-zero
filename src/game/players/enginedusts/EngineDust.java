@@ -58,7 +58,6 @@ public class EngineDust extends GameObject {
     }
 
     public void config(Vector2D velocity) {
-
         this.addAction(new SequenceAction(
                 new WaitAction(2),
                 new Action() {
