@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ab87bd4-b3ce-4745-9dd8-942c1b9f8a4b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/players/Player.java" afterPath="$PROJECT_DIR$/src/game/players/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/players/enginedusts/EngineDust.java" afterPath="$PROJECT_DIR$/src/game/players/enginedusts/EngineDust.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,13 +35,12 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/game/players/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="136" column="57" lean-forward="false" selection-start-line="136" selection-start-column="57" selection-end-line="136" selection-end-column="57" />
+            <state relative-caret-position="178">
+              <caret line="155" column="36" lean-forward="false" selection-start-line="155" selection-start-column="36" selection-end-line="155" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3895#3896#0" expanded="true" />
-                <element signature="e#3932#3933#0" expanded="true" />
-                <element signature="class#4203:4634" expanded="false" />
+                <element signature="e#4016#4017#0" expanded="true" />
+                <element signature="e#4053#4054#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1088,13 +1087,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/players/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="136" column="57" lean-forward="false" selection-start-line="136" selection-start-column="57" selection-end-line="136" selection-end-column="57" />
+        <state relative-caret-position="178">
+          <caret line="155" column="36" lean-forward="false" selection-start-line="155" selection-start-column="36" selection-end-line="155" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3895#3896#0" expanded="true" />
-            <element signature="e#3932#3933#0" expanded="true" />
-            <element signature="class#4203:4634" expanded="false" />
+            <element signature="e#4016#4017#0" expanded="true" />
+            <element signature="e#4053#4054#0" expanded="true" />
           </folding>
         </state>
       </provider>

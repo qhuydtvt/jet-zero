@@ -22,14 +22,14 @@ public class Player extends GameObject {
 
     private float angle = 0;
 
-    private final float GRAVITY = 0.4f;
+    private final float GRAVITY = 0.3f;
     private final int JET_ENERGY_MAX = 400;
     private final int JET_ENERGY_CONSUME_RATE = 2;
     private final int JET_ENERGY_BOOST_CONSUME_RATE = 10;
     private final int JET_ENERGY_RECHARGE_RATE = 4;
 
     private final int JET_NORMAL_MAX_SPEED = 4;
-    private final int JET_BOOST_SPEED = 12;
+    private final int JET_BOOST_SPEED = 6;
 
     private float jetSpeed;
 
@@ -39,6 +39,7 @@ public class Player extends GameObject {
 
     private Vector2D velocity;
     private Vector2D jetVelocity;
+    private Vector2D jetBoostVelocity;
 
     private PlayerAnimator animator;
     private EngineFire engineFire;
@@ -55,6 +56,7 @@ public class Player extends GameObject {
 
     private void configJet() {
         this.velocity = new Vector2D();
+        this.jetBoostVelocity = new Vector2D();
         this.jetEnergy = JET_ENERGY_MAX;
         this.jetVelocity = new Vector2D();
         this.boostDisabled = false;
@@ -96,11 +98,11 @@ public class Player extends GameObject {
         this.jetRunning = false;
 
         if (InputManager.instance.rightPressed) {
-            angle = Mathx.clamp(angle + 4, -60, 60);
+            angle = Mathx.clamp(angle + 1, -80, 80);
         }
 
         if (InputManager.instance.leftPressed) {
-            angle = Mathx.clamp(angle - 4, -60, 60);
+            angle = Mathx.clamp(angle - 1, -80, 80);
         }
 
         if (InputManager.instance.upPressed) {
@@ -112,10 +114,11 @@ public class Player extends GameObject {
             this.jetEnergy = Mathx.clamp(this.jetEnergy + JET_ENERGY_RECHARGE_RATE, 0, JET_ENERGY_MAX);
         }
 
-        if (InputManager.instance.xPressed) {
-            if(!this.boostDisabled)
-                boostAndFire();
+        if (InputManager.instance.xPressed && !this.boostDisabled) {
+            boostAndFire();
         }
+
+        this.jetVelocity.addUp(jetBoostVelocity);
 
         if (GRAVITY + this.jetVelocity.y <= 0) {
             this.velocity.y = this.jetVelocity.y;
@@ -127,6 +130,7 @@ public class Player extends GameObject {
                 angle = Mathx.clamp(angle + 1, -60, 0);
             }
         }
+
         this.velocity.x = jetVelocity.x;
 
         moveVertical();
@@ -147,25 +151,20 @@ public class Player extends GameObject {
     private void boostAndFire() {
         if (jetEnergy > JET_ENERGY_MAX * 0.2) {
             this.boostDisabled = true;
+            this.jetBoostVelocity.set(Vector2D.UP.rotate(angle).multiply(JET_BOOST_SPEED));
             this.addAction(new SequenceAction(
-                    new WaitAction(20),
+                    new WaitAction(7),
                     // Enable boost
                     new Action() {
                         @Override
                         public boolean run(GameObject gameObject) {
                             Player player = (Player)gameObject;
                             player.boostDisabled = false;
+                            player.jetBoostVelocity.set(0, 0);
                             return true;
-                        }
-
-                        @Override
-                        public void reset() {
-
                         }
                     }
             ));
-
-            this.jetVelocity.set(Vector2D.UP.rotate(angle).multiply(JET_BOOST_SPEED));
             this.jetEnergy -= JET_ENERGY_BOOST_CONSUME_RATE;
             spawnFireBall();
         }
