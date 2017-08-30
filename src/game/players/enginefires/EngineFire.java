@@ -76,7 +76,7 @@ public class EngineFire extends GameObject {
                     } else {
                         dustVelocity.x = Mathx.uniformRandom(-2, 0.5f);
                     }
-                    dust.config(dustVelocity);
+                    dust.config(dustVelocity, (int)Mathx.uniformRandom(50, 10f));
                 }
             }
         }

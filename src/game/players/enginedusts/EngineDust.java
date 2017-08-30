@@ -2,9 +2,7 @@ package game.players.enginedusts;
 
 import game.bases.GameObject;
 import game.bases.Vector2D;
-import game.bases.actions.Action;
-import game.bases.actions.SequenceAction;
-import game.bases.actions.WaitAction;
+import game.bases.actions.*;
 import game.bases.physics.Physics;
 import game.bases.renderers.ImageRenderer;
 import game.platforms.Platform;
@@ -33,21 +31,17 @@ public class EngineDust extends GameObject {
     public void run(Vector2D parentPosition) {
         this.position.addUp(this.velocity);
         super.run(parentPosition);
-        fadeOut();
         updatePhysics();
+        updateAlpha();
+    }
+
+    private void updateAlpha() {
+        this.imageRenderer.getTransform().alpha = this.imageAlpha;
     }
 
     private void updatePhysics() {
         if (Physics.bodyAtPoint(this.screenPosition.add(velocity), Platform.class) != null) {
             this.velocity.y = 0;
-        }
-    }
-
-    private void fadeOut() {
-        this.imageAlpha = Mathx.clamp(this.imageAlpha - 0.02f, 0, 1);
-        this.imageRenderer.getTransform().alpha = this.imageAlpha;
-        if (imageAlpha == 0) {
-            this.isActive = false;
         }
     }
 
@@ -57,7 +51,7 @@ public class EngineDust extends GameObject {
         imageAlpha = 1.0f;
     }
 
-    public void config(Vector2D velocity) {
+    public void config(Vector2D velocity, int frameAlive) {
         this.addAction(new SequenceAction(
                 new WaitAction(2),
                 new Action() {
@@ -78,6 +72,21 @@ public class EngineDust extends GameObject {
                         return true;
                     }
                 }
+        ));
+
+        this.addAction(new SequenceAction(
+                new RepeatAction(
+                        new Action() {
+                            @Override
+                            public boolean run(GameObject gameObject) {
+                                EngineDust dust = (EngineDust) gameObject;
+                                dust.imageAlpha = Mathx.clamp(dust.imageAlpha - (1f / frameAlive), 0, 1);
+                                return true;
+                            }
+                        },
+                        frameAlive
+                ),
+                new DeactivateAction()
         ));
     }
 }
