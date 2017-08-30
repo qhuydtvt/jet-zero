@@ -1,6 +1,7 @@
 package game.bases;
 
 
+import game.ViewPort;
 import game.bases.actions.Action;
 import game.bases.physics.Physics;
 import game.bases.physics.PhysicsBody;
@@ -50,10 +51,10 @@ public class GameObject {
         }
     }
 
-    public static void renderAll(Graphics2D g2d) {
+    public static void renderAll(Graphics2D g2d, ViewPort viewPort) {
         for (GameObject gameObject : gameObjects) {
             if (gameObject.isActive)
-                gameObject.render(g2d);
+                gameObject.render(g2d, viewPort);
         }
     }
 
@@ -93,13 +94,15 @@ public class GameObject {
         return isActive;
     }
 
-    public void render(Graphics2D g2d) {
+    public void render(Graphics2D g2d, ViewPort viewPort) {
+
         if (!isHidden) {
             for(GameObject child: children) {
-                child.render(g2d);
+                child.render(g2d, viewPort);
             }
+
             if (renderer != null) {
-                renderer.render(g2d, this.screenPosition);
+                renderer.render(g2d, viewPort.translate(this.screenPosition));
             }
         }
     }

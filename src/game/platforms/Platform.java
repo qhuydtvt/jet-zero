@@ -15,7 +15,7 @@ public class Platform extends GameObject implements PhysicsBody {
 
     public Platform() {
         super();
-        this.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/sprite/platform0000.png"));
+
         this.boxCollider = new BoxCollider(32, 32);
         this.children.add(boxCollider);
     }
@@ -23,5 +23,22 @@ public class Platform extends GameObject implements PhysicsBody {
     @Override
     public BoxCollider getBoxCollider() {
         return boxCollider;
+    }
+
+    public static Platform create(int platformType) {
+        Platform platform = new Platform();
+        switch (platformType) {
+            case 3:
+                platform.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/sprite/platform0000.png"));
+                break;
+            case 2:
+                platform.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/sprite/spike0000.png"));
+                break;
+            case 1:
+                platform.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/sprite/grass0000.png"));
+                break;
+        }
+
+        return platform;
     }
 }

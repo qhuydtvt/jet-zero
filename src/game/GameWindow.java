@@ -10,8 +10,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+
 import game.bases.*;
 import game.bases.scenes.SceneManager;
+import game.maps.Map;
 import game.platforms.Platform;
 import game.players.Player;
 
@@ -27,6 +29,9 @@ public class GameWindow extends JFrame {
 
     long lastTimeUpdate = -1;
 
+    private ViewPort viewPort;
+    private Player player;
+
     public GameWindow() {
         setupWindow();
         setupBackBuffer();
@@ -38,14 +43,8 @@ public class GameWindow extends JFrame {
     }
 
     private void addPlatforms() {
-        for(int i = 0, platformX = 10; i < 20; i++, platformX += 32) {
-            Platform platform = new Platform();
-            platform.position.set(platformX, 500);
-            GameObject.add(platform);
-        }
-
-        addPlatform(130, 500 - 30);
-        addPlatform(130, 500 - 30 * 2);
+        Map map = Map.load("assets/maps/tut_lvl.json");
+        map.generate();
     }
 
     private void addPlatform(int x, int y) {
@@ -55,8 +54,8 @@ public class GameWindow extends JFrame {
     }
 
     private void addPlayer() {
-        Player player = new Player();
-        player.position.set(20, 100);
+        player = new Player();
+        player.position.set(120, 100);
         GameObject.add(player);
     }
 
@@ -112,6 +111,7 @@ public class GameWindow extends JFrame {
     private void run() {
         GameObject.runAll();
         GameObject.runAllActions();
+        viewPort.follow(player);
         SceneManager.instance.changeSceneIfNeeded();
     }
 
@@ -119,7 +119,7 @@ public class GameWindow extends JFrame {
         backBufferGraphics2D.setColor(Color.BLACK);
         backBufferGraphics2D.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-        GameObject.renderAll(backBufferGraphics2D);
+        GameObject.renderAll(backBufferGraphics2D, viewPort);
 
         repaint();
     }
@@ -128,6 +128,8 @@ public class GameWindow extends JFrame {
         this.setSize(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT);
         this.setResizable(false);
         this.setTitle("Platformer begin");
+        this.viewPort = new ViewPort();
+        this.viewPort.getFollowOffset().set(-Settings.GAMEPLAY_WIDTH / 2, -Settings.GAMEPLAY_HEIGHT / 2);
 
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -139,6 +141,7 @@ public class GameWindow extends JFrame {
 
     @Override
     public void paint(Graphics g) {
-        g.drawImage(backBufferImage, 0, 0, null);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(backBufferImage, 0, 0, null);
     }
 }
